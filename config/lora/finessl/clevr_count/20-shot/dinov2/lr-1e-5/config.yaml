@@ -1,0 +1,55 @@
+algorithm: finessl
+save_dir: ./saved_models/lora/finessl/clevr_count/20-shot/dinov2/lr-1e-5
+save_name: log
+resume: true
+load_path: 
+  ./saved_models/lora/finessl/clevr_count/20-shot/dinov2/lr-1e-5/log/latest_model.pth
+overwrite: true
+use_tensorboard: true
+use_wandb: false
+
+batch_size: 32
+eval_batch_size: 16
+ema_m: 0.0
+img_size: 224
+crop_ratio: 0.875
+optim: SGD
+lr: 1e-05
+layer_decay: 1.0
+momentum: 0.9
+weight_decay: 5e-4
+seed: 0
+world_size: 1
+rank: 0
+gpu: None
+
+
+# Finessl settings
+alpha: 8.0
+smoothing: 0.5
+th_min: 0.0
+th: 0.7
+w_con: 3.0
+patch_size: 16
+s_con: 1.0
+
+net: timm/vit_base_patch14_reg4_dinov2.lvd142m #timm/
+net_from_name: false
+use_pretrain: true
+
+# VTAB settings
+train_split: train
+eval_on_test: true
+evaluate_unsupervised: false
+epoch: 30
+dataset: clevr_count
+num_classes: 8
+num_labels: 160
+num_train_iter: 65490
+num_warmup_iter: 1637
+num_log_iter: 545
+num_eval_iter: 4366
+es_patience: 0.0
+peft_config:
+  method_name: lora
+  lora_bottleneck: 4

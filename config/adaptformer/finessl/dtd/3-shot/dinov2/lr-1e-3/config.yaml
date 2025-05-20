@@ -1,0 +1,60 @@
+algorithm: finessl
+save_dir: ./saved_models/adaptformer/finessl/dtd/3-shot/dinov2/lr-1e-3
+save_name: log
+resume: true
+load_path: 
+  ./saved_models/adaptformer/finessl/dtd/3-shot/dinov2/lr-1e-3/log/latest_model.pth
+overwrite: true
+use_tensorboard: true
+use_wandb: false
+
+batch_size: 32
+eval_batch_size: 16
+ema_m: 0.0
+img_size: 224
+crop_ratio: 0.875
+optim: SGD
+lr: 0.001
+layer_decay: 1.0
+momentum: 0.9
+weight_decay: 5e-4
+seed: 0
+world_size: 1
+rank: 0
+gpu: None
+
+
+# Finessl settings
+alpha: 8.0
+smoothing: 0.5
+th_min: 0.0
+th: 0.7
+w_con: 3.0
+patch_size: 16
+s_con: 1.0
+
+net: timm/vit_base_patch14_reg4_dinov2.lvd142m #timm/
+net_from_name: false
+use_pretrain: true
+
+# VTAB settings
+train_split: train
+eval_on_test: true
+evaluate_unsupervised: false
+epoch: 30
+dataset: dtd
+num_classes: 47
+num_labels: 141
+num_train_iter: 3420
+num_warmup_iter: 85
+num_log_iter: 28
+num_eval_iter: 228
+es_patience: 0.0
+peft_config:
+  method_name: adaptformer
+  ft_mlp_module: adapter
+  ft_mlp_mode: parallel
+  ft_mlp_ln: before
+  adapter_init: lora_kaiming
+  adapter_bottleneck: 16
+  adapter_scaler: 0.1

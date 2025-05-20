@@ -1,0 +1,52 @@
+T: 0.5
+algorithm: fixmatch
+amp: false
+batch_size: 32
+clip: 0.0
+crop_ratio: 0.875
+data_dir: ./data
+dataset: kitti
+ema_m: 0.0
+epoch: 30
+es_patience: 0.0
+eval_batch_size: 16
+eval_on_test: true
+evaluate_unsupervised: false
+gpu: None
+hard_label: true
+img_size: 224
+layer_decay: 1.0
+load_path: 
+  ./saved_models/lora/fixmatch/kitti/5-shot/dinov2_rmsprop/lr-1e-5/log/latest_model.pth
+lr: 1e-05
+momentum: 0.9
+net: timm/vit_base_patch14_reg4_dinov2.lvd142m
+net_from_name: false
+num_classes: 4
+num_eval_iter: 422
+num_labels: 20
+num_log_iter: 52
+num_train_iter: 6330
+num_warmup_iter: 158
+num_workers: 4
+optim: RMSprop
+overwrite: true
+p_cutoff: 0.95
+peft_config:
+  lora_bottleneck: 4
+  method_name: lora
+rank: 0
+resume: true
+save_dir: ./saved_models/lora/fixmatch/kitti/5-shot/dinov2_rmsprop/lr-1e-5
+save_name: log
+seed: 0
+train_sampler: RandomSampler
+train_split: train
+ulb_loss_ratio: 1.0
+uratio: 1
+use_cat: true
+use_pretrain: true
+use_tensorboard: true
+use_wandb: false
+weight_decay: 0.0005
+world_size: 1

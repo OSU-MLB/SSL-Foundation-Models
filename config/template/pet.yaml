@@ -1,0 +1,57 @@
+algorithm: pet
+save_dir: ./saved_models/new_cv/full/train-on-train/pet/dtd/6-shot/dinov2/lr-1e-4
+save_name: log
+resume: true
+load_path: 
+  ./saved_models/new_cv/full/train-on-train/pet/dtd/6-shot/dinov2/lr-1e-4/log/latest_model.pth
+overwrite: true
+use_tensorboard: true
+use_wandb: false
+epoch: 35
+num_train_iter: 3815
+num_log_iter: 27
+num_eval_iter: 218
+batch_size: 32
+eval_batch_size: 16
+num_warmup_iter: 95
+num_labels: 282
+ema_m: 0.0
+img_size: 224
+crop_ratio: 0.875
+optim: AdamW
+lr: 0.0001
+layer_decay: 1.0
+momentum: 0.9
+weight_decay: 0.0005
+amp: false
+clip: 0.0
+use_cat: true
+net: timm/vit_base_patch14_reg4_dinov2.lvd142m
+net_from_name: false
+data_dir: ./data
+dataset: dtd
+train_sampler: RandomSampler
+num_classes: 47
+num_workers: 4
+seed: 0
+world_size: 1
+rank: 0
+gpu: None
+use_pretrain: true
+# VTAB settings
+train_split: train
+eval_on_test: true
+evaluate_unsupervised: false
+es_patience: 0.0
+# PET settings
+w_alpha: 1.0
+s_alpha: 1.0
+kd_w_alpha: 1.0
+kd_s_alpha: 1.0
+temperature: 1.0
+budget: 1.0
+pet_sources: [
+  "config/new_cv/adaptformer/train-on-train/supervised/dtd/6-shot/dinov2/dpr-0/{'adapter_scaler': 0.1, 'adapter_bottleneck': 8}/lr-1e-3/config.yaml",
+]
+pl_selection: balanced-max
+logits_ensemble: voting

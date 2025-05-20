@@ -1,0 +1,62 @@
+algorithm: supervised
+save_dir: "./saved_models/adaptformer/supervised/diabetic_retinopathy/40-shot/dinov2/dpr-0.2/train-aug-weak/{'adapter_scaler':
+  0.1, 'adapter_bottleneck': 4}/lr-1e-5"
+save_name: log
+resume: true
+load_path: "./saved_models/adaptformer/supervised/diabetic_retinopathy/40-shot/dinov2/dpr-0.2/train-aug-weak/{'adapter_scaler':
+  0.1, 'adapter_bottleneck': 4}/lr-1e-5/log/latest_model.pth"
+overwrite: true
+use_tensorboard: true
+use_wandb: false
+epoch: 50
+num_train_iter: 650
+num_log_iter: 3
+num_eval_iter: 260
+batch_size: 16
+eval_batch_size: 16
+num_warmup_iter: 16
+num_labels: 200
+uratio: 1
+ema_m: 0.0
+hard_label: true
+T: 0.5
+p_cutoff: 0.95
+ulb_loss_ratio: 1.0
+img_size: 224
+crop_ratio: 0.875
+optim: AdamW
+lr: 1e-05
+layer_decay: 1.0
+momentum: 0.9
+weight_decay: 0.0005
+amp: false
+clip: 0.0
+use_cat: true
+net: timm/vit_base_patch14_reg4_dinov2.lvd142m
+net_from_name: false
+data_dir: ./data
+dataset: diabetic_retinopathy
+train_sampler: RandomSampler
+num_classes: 5
+num_workers: 4
+seed: 0
+world_size: 1
+rank: 0
+gpu: None
+use_pretrain: true
+# VTAB settings
+train_split: train
+eval_on_test: true
+evaluate_unsupervised: false
+es_patience: 0.0
+peft_config:
+  method_name: adaptformer
+  ft_mlp_module: adapter
+  ft_mlp_mode: parallel
+  ft_mlp_ln: before
+  adapter_init: lora_kaiming
+  adapter_bottleneck: 4
+  adapter_scaler: 0.1
+vit_config:
+  drop_path_rate: 0.2
+train_aug: weak

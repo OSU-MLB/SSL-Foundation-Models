@@ -1,0 +1,54 @@
+algorithm: finessl
+save_dir: ./saved_models/lora/finessl/kitti/5-shot/clip/lr-1e-4
+save_name: log
+resume: true
+load_path: ./saved_models/lora/finessl/kitti/5-shot/clip/lr-1e-4/log/latest_model.pth
+overwrite: true
+use_tensorboard: true
+use_wandb: false
+
+batch_size: 32
+eval_batch_size: 16
+ema_m: 0.0
+img_size: 224
+crop_ratio: 0.875
+optim: SGD
+lr: 0.0001
+layer_decay: 1.0
+momentum: 0.9
+weight_decay: 5e-4
+seed: 0
+world_size: 1
+rank: 0
+gpu: None
+
+
+# Finessl settings
+alpha: 8.0
+smoothing: 0.5
+th_min: 0.0
+th: 0.7
+w_con: 3.0
+patch_size: 16
+s_con: 1.0
+
+net: timm/vit_base_patch16_clip_224.openai   #timm/
+net_from_name: false
+use_pretrain: true
+
+# VTAB settings
+train_split: train
+eval_on_test: true
+evaluate_unsupervised: false
+epoch: 30
+dataset: kitti
+num_classes: 4
+num_labels: 20
+num_train_iter: 6330
+num_warmup_iter: 158
+num_log_iter: 52
+num_eval_iter: 422
+es_patience: 0.0
+peft_config:
+  method_name: lora
+  lora_bottleneck: 4
