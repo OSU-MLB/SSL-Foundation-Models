@@ -30,23 +30,22 @@ pip install -r requirements.txt
 
 ### Dataset & Pretrained Model
 
-Please download our [models](https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/zhang_14217_buckeyemail_osu_edu/EbOBy2TZcwxItRzXNjuJPI0Bm8O400jywXyot0Exycoilw?e=Ihs01X) and 
-[data](https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/zhang_14217_buckeyemail_osu_edu/ETApxQ3V_zNLrUrLzhwphfABPZsKr6gNVD1yUQvsXzEWJg?e=66o4rd). Then, unzip the files and place them in `data` and `pretrain_weight` directories with the following structure:
+Please download our [models](https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/zhang_14217_buckeyemail_osu_edu/EbOBy2TZcwxItRzXNjuJPI0Bm8O400jywXyot0Exycoilw?e=Ihs01X) and [data](https://buckeyemailosu-my.sharepoint.com/:u:/g/personal/zhang_14217_buckeyemail_osu_edu/ETApxQ3V_zNLrUrLzhwphfABPZsKr6gNVD1yUQvsXzEWJg?e=66o4rd). Then, unzip the files and place them in `data` and `pretrain_weight` directories with the following structure:
 
 
 ```
 ├── data
 │   └── vtab
-│       └── clevr_count
-│           ├── images
-│           │   ├── 000
-│           │   ├── 001
-│           │   └── ...
-│           ├── labeded_idx
-│           ├── test.list
-│           ├── train.list
-│           ├── trainval.list
-│           └── val.list
+│       ├── clevr_count
+│       │   ├── images
+│       │   │   ├── 000
+│       │   │   ├── 001
+│       │   │   └── ...
+│       │   ├── labeded_idx
+│       │   ├── test.list
+│       │   ├── train.list
+│       │   ├── trainval.list
+│       │   └── val.list
 │       ├── diabetic_retinopathy
 │       │   └── ...
 │       ├── dtd
@@ -59,7 +58,7 @@ Please download our [models](https://buckeyemailosu-my.sharepoint.com/:u:/g/pers
 │           └── ...
 ├── pretrain_weight
 │   ├── vit_base_patch14_reg4_dinov2_lvd142m.bin
-│   └── vit_base_patch14_reg4_dinov2_lvd142m.bin
+│   └── vit_base_patch16_clip_224_openai.bin
 └──[other files]
 ```
 
@@ -109,7 +108,7 @@ python train.py --c "config/lora/pet-ensemble/dtd/3-shot/clip/config.yaml"
 Similarly, we can collect the results using *SQLite*:
 
 ```bash
-python pet_collect.py
+python tune_collect.py
 ```
 
 ### Print Results
