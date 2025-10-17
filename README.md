@@ -2,7 +2,7 @@
 
 __Official implementation of the following work:__
 
-*P. Zhang, Z. Mai, Q.-H. Nguyen & W.-L. Chao. [Revisiting semi-supervised learning in the era of foundation models](https://arxiv.org/pdf/2503.09707). arXiv.*
+*P. Zhang, Z. Mai, Q.-H. Nguyen & W.-L. Chao. [Revisiting semi-supervised learning in the era of foundation models](https://arxiv.org/pdf/2503.09707). NeurIPS 2025.*
 
 ## Introduction
 This repository contains the official implementation of *V-PET* (**V**FM-**P**EFT **E**nesmble **T**raining). The code is modified from [USB](https://github.com/microsoft/Semi-supervised-learning). Original copyright notice:
